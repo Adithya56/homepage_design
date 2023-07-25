@@ -1,3 +1,59 @@
+ function loadAllProducts() {
+    	  // Check if the #product-container exists
+    	  if ($('#productsdisplay').length === 0) {
+    	    return;
+    	  }
+
+    	  // Show a loading indicator or spinner here if desired
+    	  showSpinner();
+
+    	  // Make an AJAX request to fetch the next set of products
+    	  $.ajax({
+    	    url: "productsDisplay",
+    	    method: 'GET',
+    	    data: { page: currentPage }, // Send the current page as a parameter
+    	    success: function(response) {
+    	      // Hide the loading indicator or spinner here if shown
+    	      hideSpinner();
+
+    	      // Append the fetched products to the product container
+    	      $('#productsdisplay').append(response);
+
+    	      // Increment the current page
+    	      currentPage++;
+    	    },
+    	    error: function(xhr, status, error) {
+    	      console.log('AJAX Error: ' + error);
+    	      // Handle the error condition here if necessary
+    	    }
+    	  });
+    	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # homepage_design
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
